@@ -1,0 +1,345 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.pc{display:block;}
+.sp{display:none;}
+.se{display:none;}
+
+
+/* =======================================
+    共通CSS
+======================================= */
+
+/* ------各ブロック-------*/
+section, header, footer, main, .container {
+  width: 100%;
+  min-width: 1100px;
+}
+.container {
+  margin: 0 auto;
+  padding: 80px 0;
+  position: relative;
+}
+
+/* ------フォント-------*/
+.shsj {
+  font-family: "Source Han Serif JP", "Noto Serif CJK JP", "游明朝体", "Yu Mincho", YuMincho, serif;
+}
+.baskerville {
+  font-family: Baskerville, serif;
+}
+.arvo {
+  font-family: 'Arvo', serif;
+}
+.avenirnext {
+  font-family: "Avenir Next", sans-serif;
+}
+
+/* ------ボタン-------*/
+.btn {
+  display: block;
+  width: 250px;
+  height: 60px;
+  line-height: 60px;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ------heightをwidthとの比で指定-------*/
+.calc_height_o {
+  position: relative;
+  /* width指定 */
+}
+.calc_height_o::before {
+  content:"";
+  display: block;
+  /* 高さ（padding-top）を比率で指定 */
+  /* padding-top: %; */
+}
+.calc_height_i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* ------画像を横幅に合わせてトリミング-------*/
+.fitimg {
+  overflow: hidden;
+  position: relative;
+  /* width、heightを指定 */
+}
+.fitimg img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: auto;
+}
+
+/* ------flex_box-------*/
+.flex_box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* ------エラー文-------*/
+.error {
+  display: none;
+  color: #df5656;
+}
+.error.show {
+  display: block;
+}
+
+/* ------ヘッダー-------*/
+header {
+  width: 100%;
+  height: 80px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+header .container {
+  padding: 0;
+  height: 100%;
+  overflow: visible;
+  position: relative;
+}
+header .flex_box {
+  justify-content: center;
+  align-items: center;
+}
+header h1 {
+  font-family: 'Barlow', sans-serif;
+  font-size: 35px;
+  color: #df5656;
+}
+
+/* ------フッター-------*/
+footer {
+  height: 60px;
+  background-color: #343434;
+}
+footer .container {
+  padding: 0;
+}
+footer p {
+  line-height: 60px !important;
+  text-align: center;
+  font-size: 13px;
+  color: #a7a8a4;
+}
+
+/* ------コンテンツ-------*/
+.app {
+  width: 550px;
+  margin: 0 auto;
+}
+.app h2 {
+  font-size: 28px;
+  font-weight: 500;
+  padding-left: 40px;
+  padding-bottom: 7px;
+  position: relative;
+  border-bottom: 1px solid #808080;
+}
+.app h2 span {
+  position: absolute;
+  top: -3px;
+  left: 0;
+}
+.app h2 img {
+  width: 29px;
+  height: auto;
+}
+.app form {
+  padding: 50px 0;
+}
+.app input[type="text"] {
+  width: 300px;
+  height: 45px;
+  background-color: #efefef;
+  border-radius: 30px;
+  border: 1px solid #343434;
+  padding: 0 20px;
+  margin-right: 15px;
+}
+.app input[type="text"]:focus {
+  outline: 0;
+  border: 1px solid #df5656;
+  box-shadow: 0 0 5px rgba(223, 86, 86);
+}
+.app input[type="text"].hasError {
+  border: 1px solid #df5656;
+}
+.app input[type="text"].hasError::placeholder {
+  color: #df5656;
+}
+.add_btn {
+  transition: .3s;
+  width: 70px;
+  height: 45px;
+  background-color: #fff;
+  border: 1px solid #df5656;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 500;
+}
+.add_btn:hover {
+  transition: .3s;
+  opacity: 1;
+  background-color: #df5656;
+  color: white;
+}
+.delete_all {
+  margin-bottom: 30px;
+}
+.delete_all button {
+  height: 45px;
+  padding: 0 20px;
+  margin-bottom: 10px;
+  border-radius: 30px;
+  background-color: #df5656;
+  color: white;
+}
+.app li {
+  width: 100%;
+  margin-bottom: 25px;
+  position: relative;
+}
+.app li input[type="checkbox"] {
+  display: none;
+}
+.app li label p {
+  width: 100%;
+  padding: 13px 65px 13px 19px;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  transition: .3s;
+}
+.app li label p:hover {
+  transition: .3s;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+}
+.app li input[type="checkbox"]:checked + p {
+  text-decoration: line-through;
+  box-shadow: none;
+  background-color: #c0c0c0;
+}
+.app li input[type="checkbox"]:checked + p:hover {
+  background-color: #9b9b9b;
+}
+.peke_btn {
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  transition: .2s;
+}
+.peke_btn img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  transition: .2s;
+}
+.peke_btn:hover {
+  opacity: 1;
+  width: 26px;
+  height: 26px;
+}
+.peke_btn:hover img {
+  width: 26px;
+  height: 26px;
+  transition: .2s;
+}
+.delete_btn {
+  position: absolute;
+  top: calc(50% - 12px);
+  right: 25px;
+}
+.delete_btn:hover img {
+  box-shadow: 0 0 12px rgba(223, 86, 86, 0.3);
+}
+.modal_back {
+  display: none;
+  overflow-y: scroll;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 200px 0;
+}
+.modal_back.open {
+  display: block;
+}
+.modal {
+  width: 500px;
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+  padding: 45px;
+  border-radius: 8px;
+  background-color: #df5656;
+}
+.close_btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+.close_btn:hover {
+  top: 14px;
+  right: 14px;
+}
+.cnfrm_dlt_p {
+  margin-bottom: 25px;
+  font-size: 17px;
+  font-weight: 500;
+  color: #fff;
+}
+.cnfrm_dlt_item {
+  text-align: justify;
+  color: #000;
+}
+.cnfrm_dlt_done {
+  display: none;
+  margin-top: 10px;
+  text-align: justify;
+  color: #fff;
+}
+.cnfrm_dlt_done.show {
+  display: block;
+}
+.modal_btns {
+  width: 200px;
+  margin: 25px auto 0;
+  justify-content: space-around;
+}
+.modal_btns button {
+  width: 70px;
+  height: 40px;
+  border-radius: 30px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+.back {
+  background-color: #c0c0c0;
+}
+.delete {
+  background-color: #666666;
+}
+.cnfrmAllDltModal p {
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+}
