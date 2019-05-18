@@ -1,1 +1,83 @@
-aaa
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="description" content="Todo List">
+    <title>Todo List</title>
+    <link href="img/###.png" rel="icon" type="image/png">
+    <link rel="stylesheet" href="css/index.css">
+  </head>
+  <body>
+    <header>
+      <div class="container flex_box">
+        <div class="header_title">
+          <h1>
+            Todo List
+          </h1>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="todo">
+        <div class="container">
+          <div class="app" id="app">
+            <h2><span><img src="img/icon_memo.png"></span>やることリスト</h2>
+            <form @submit.prevent>
+              <input type="text" v-bind:placeholder="placeholder" v-model="newItem" v-bind:class="{ hasError: hasError }">
+              <button class="add_btn" @click="addItem">Add</button>
+            </form>
+            <div class="delete_all">
+              <button type="button" @click="cnfrmAllDltModal">完了項目を全削除</button>
+              <p class="error" v-bind:class="{ show: noTodoError }">項目が登録されていません</p>
+              <p class="error" v-bind:class="{ show: noDoneError }">完了している項目がありません</p>
+            </div>
+            <!-- 完了項目を全削除 確認モーダル -->
+            <div class="modal_back" v-bind:class="{ open: confirmAllDelete }" @click.self="cnfrmAllDltModal">
+              <div class="modal cnfrmAllDltModal">
+                <button type="button" class="peke_btn close_btn" @click="cnfrmAllDltModal"><img src="img/icon_delete_w.png"></button>
+                <p>完了項目を全て<br class="sp">削除してよろしいですか？</p>
+                <div class="modal_btns flex_box">
+                  <button class="back" @click="cnfrmAllDltModal">戻る</button>
+                  <button class="delete" @click="purge">削除</button>
+                </div>
+              </div>
+            </div>
+            <ul>
+              <li v-for="(todo, index) in todos">
+                <label>
+                  <input type="checkbox" v-model="todo.isDone" @click="removeError">
+                  <p>{{ todo.item }}</p>
+                </label>
+                <button class="peke_btn delete_btn" @click="confirmDelete(index)"><img src="img/icon_delete.png"></button>
+                <!-- 項目削除 確認モーダル -->
+                <div class="modal_back" v-bind:class="{ open: todo.confirmDelete }" @click.self="confirmDelete(index)">
+                  <div class="modal">
+                    <button type="button" class="peke_btn close_btn" @click="confirmDelete(index)"><img src="img/icon_delete_w.png"></button>
+                    <p class="cnfrm_dlt_p">以下の項目を削除します。<br>よろしいですか？</p>
+                    <p class="cnfrm_dlt_item">「{{ todo.item }}」</p>
+                    <p class="cnfrm_dlt_done" v-bind:class="{ show: todo.isDone }">（完了済み）</p>
+                    <p class="cnfrm_dlt_done" v-bind:class="{ show: todo.isDone === false }">（未完了）</p>
+                    <div class="modal_btns flex_box">
+                      <button class="back" @click="confirmDelete(index)">戻る</button>
+                      <button class="delete" @click="deleteItem(index)">削除</button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li v-show="!todos.length">やることが登録されていません。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="container">
+        <p>Created by inoshun</p>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="js/common.js"></script>
+  </body>
+</html>

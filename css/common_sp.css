@@ -1,0 +1,163 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.sp{display:block;}
+.pc{display:none;}
+.se{display:none;}
+@media screen and (max-width: 370px) {
+  .se{display:block;}
+}
+
+
+/* =======================================
+    共通CSS
+======================================= */
+/* ------各ブロック-------*/
+section, header, footer, main, .container {
+  min-width: 280px;
+}
+.container {
+  width: 95%;
+  padding: 45px 10px;
+}
+
+/* ------タイトル-------*/
+.section_title {
+  font-size: 22px;
+  line-height: 1.2;
+}
+.scttl_eng {
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+.page_title {
+  font-size: 25px;
+}
+
+/* ------ボタン-------*/
+.btn {
+  width: 180px;
+  height: 45px;
+  line-height: 45px;
+  font-size: 14px;
+}
+
+/* ------エラー文-------*/
+
+/* ------ヘッダー-------*/
+header {
+  height: 45px;
+}
+header .container {
+  width: 100%;
+}
+header h1 {
+  font-size: 26px;
+}
+
+/* ------フッター-------*/
+footer {
+  height: 35px;
+}
+footer p {
+  line-height: 35px !important;
+}
+
+/* ------コンテンツ-------*/
+.app {
+  width: 100%;
+}
+.app h2 {
+  font-size: 25px;
+}
+.app h2 img {
+  width: 27px;
+}
+.app form {
+  padding: 40px 0;
+}
+.app input[type="text"] {
+  width: calc(100% - 80px);
+  max-width: 300px;
+  height: 40px;
+  margin-right: 10px;
+}
+@media screen and (max-width: 370px) {
+  .app input[type="text"].hasError::placeholder {
+    font-size: 11px;
+  }
+}
+.add_btn {
+  width: 65px;
+  height: 40px;
+  font-size: 15px;
+}
+.delete_all {
+  margin-bottom: 20px;
+}
+.delete_all button {
+  height: 40px;
+  margin-bottom: 10px;
+}
+.app li {
+  margin-bottom: 20px;
+}
+.app li label p {
+  padding: 10px 50px 10px 15px;
+}
+.delete_btn {
+  right: 15px;
+}
+.modal_back {
+  padding: 150px 0;
+}
+.modal {
+  width: 90%;
+  padding: 45px 30px;
+}
+.close_btn {
+  top: 15px;
+  right: 15px;
+}
+.close_btn:hover {
+  top: 14px;
+  right: 14px;
+}
+.cnfrm_dlt_p {
+  margin-bottom: 25px;
+  font-size: 17px;
+  font-weight: 500;
+  color: #fff;
+}
+.cnfrm_dlt_item {
+  text-align: justify;
+  color: #000;
+}
+.cnfrm_dlt_done {
+  display: none;
+  margin-top: 10px;
+  text-align: justify;
+  color: #fff;
+}
+.cnfrm_dlt_done.show {
+  display: block;
+}
+.modal_btns {
+  width: 200px;
+  margin: 25px auto 0;
+  justify-content: space-around;
+}
+.modal_btns button {
+  width: 70px;
+  height: 40px;
+  border-radius: 30px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+.back {
+  background-color: #c0c0c0;
+}
+.delete {
+  background-color: #666666;
+}
